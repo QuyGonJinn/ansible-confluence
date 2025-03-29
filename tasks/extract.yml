@@ -1,0 +1,7 @@
+---
+- name: Confluence extrahieren
+  ansible.builtin.unarchive:
+    src: "/tmp/atlassian-confluence-{{ confluence_version }}.tar.gz"
+    dest: "{{ confluence_install_dir }}"
+    remote_src: yes
+    creates: "{{ confluence_install_dir }}/atlassian-confluence-{{ confluence_version }}"

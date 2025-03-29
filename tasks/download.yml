@@ -1,0 +1,7 @@
+---
+- name: Confluence Tarball downloaden
+  ansible.builtin.get_url:
+    url: "{{ confluence_download_url }}"
+    dest: "/tmp/atlassian-confluence-{{ confluence_version }}.tar.gz"
+    mode: '0644'
+    force: yes

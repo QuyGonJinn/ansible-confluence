@@ -1,0 +1,18 @@
+---
+- name: INCLUDE - User & Verzeichnisse anlegen 
+  include_tasks: setup_user.yml
+
+- name: INCLUDE - Confluence-Archiv herunterladen
+  include_tasks: download.yml
+
+- name: INCLUDE - Confluence extarhieren & herunterladen
+  include_tasks: extract.yml
+
+- name: INCLUDE - Berechtigung & Symlinks anlegen
+  include_tasks: configure.yml
+
+- name: INCLUDE - server.xml and setenv.sh konfigurieren
+  include_tasks: config_files.yml
+
+- name: INCLUDE - Service aktivieren & starten 
+  include_tasks: service.yml

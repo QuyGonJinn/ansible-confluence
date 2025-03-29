@@ -1,0 +1,18 @@
+---
+- name: server.yml anpassen
+  template:
+    src: server.xml.j2
+    dest: "{{ confluence_install_dir }}/conf/server.xml"
+    owner: "{{ confluence_user }}"
+    group: "{{ confluence_group }}"
+    mode: '0644'
+  notify: Confluence neustarten
+
+- name: setenv.sh anpassen 
+  template:
+    src: setenv.sh.j2
+    dest: "{{ confluence_install_dir }}/bin/setenv.sh"
+    owner: "{{ confluence_user }}"
+    group: "{{ confluence_group }}"
+    mode: '0755'
+  notify: Confluence neustarten

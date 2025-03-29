@@ -1,0 +1,20 @@
+---
+## Falls Confluence schon installiert ist (Upgrade)
+- name: Stoppen von Confluence service
+  systemd:
+    name: confluence
+    state: stop
+
+- name: Symlinks umlegen auf neue Version
+  ansible.builtin.file:
+    src: "{{ confluence_install_dir }}/atlassian-confluence-{{ confluence_version }}"
+    dest: "{{ confluence_symlink }}"
+    state: link
+    force: true
+
+- name: Set ownership
+  ansible.builtin.file:
+    path: "{{ confluence_install_dir }}/atlassian-confluence-{{ confluence_version }}"
+    recurse: yes
+    owner: "{{ confluence_user }}"
+    group: "{{ confluence_group }}"

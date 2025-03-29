@@ -1,0 +1,15 @@
+[Unit]
+Description=Atlassian Confluence
+After=network.target
+
+[Service]
+Type=forking
+User={{ confluence_user }}
+PIDFile={{ confluence_symlink }}/work/catalina.pid
+ExecStart={{ confluence_symlink }}/bin/start-confluence.sh -fg
+ExecStop={{ confluence_symlink }}/bin/stop-confluence.sh
+Environment="CATALINA_OPTS={{ confluence_java_opts }}"
+Environment="CONFLUENCE_HOME={{ confluence_home }}"
+
+[Install]
+WantedBy=multi-user.target

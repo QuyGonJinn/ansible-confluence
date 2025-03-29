@@ -1,0 +1,12 @@
+---
+confluence_version: "8.8.0"
+confluence_download_url: "https://product-downloads.atlassian.com/software/confluence/downloads/atlassian-confluence-{{ confluence_version }}-tar.gz"
+
+confluence_install_dir: "/opt/confluence"
+confluence_symlink: "/opt/confluence/current"
+confluence_user: "confluence"
+confluence_group: "confluence"
+
+confluence_home: "/var/atlassian/application-data/confluence"
+
+confluence_java_opts: "-Xms1024m -Xmx1024m -XX:+UseG1GC -Djava.awt.headless=true"

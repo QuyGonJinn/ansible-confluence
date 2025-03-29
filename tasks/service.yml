@@ -1,0 +1,16 @@
+---
+- name: Confluence Systemd-Service anlegen
+  ansible.builtin.template:
+    src: confluence.service.j2
+    dest: /etc/systemd/system/confluence.service
+    mode: '0644'
+
+- name: Systemd reloaden
+  ansible.builtin.systemd:
+    daemon_reload: yes
+
+- name: Confluence starten
+  ansible.builtin.service:
+    name: confluence
+    enabled: yes
+    state: started

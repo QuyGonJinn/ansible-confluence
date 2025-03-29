@@ -1,0 +1,5 @@
+---
+- name: Confluence neustarten
+  ansible.builtin.service:
+    name: confluence
+    state: restarted

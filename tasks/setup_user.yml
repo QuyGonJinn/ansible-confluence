@@ -1,0 +1,24 @@
+---
+- name: Gruppe Confluence anlegen
+  ansible.builtin.group:
+    name: "{{ confluence_group }}"
+    state: present
+
+- name: User Confluence anlegen 
+  ansible.builtin.user:
+    name: "{{ confluence_user }}"
+    group: "{{ confluence_group }}"
+    create_home: no
+    shell: /bin/false
+    system: yes
+
+- name: Benötigte Verzeichnisse anlegen 
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ confluence_user }}"
+    group: "{{ confluence_group }}"
+    mode: '0755'
+  loop:
+    - "{{ confluence_install_dir }}"
+    - "{{ confluence_home }}"
